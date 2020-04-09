@@ -1,0 +1,327 @@
+<html><head>
+
+    	<title>World Famous Pub Quiz – Trivia. Charity. Nonsense. Singing. Are you drinking yet?</title>
+
+        <meta name="viewport" content="width=device-width">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&amp;display=swap" rel="stylesheet">
+
+        <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+		<link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+		<link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+		<link rel="icon" type="image/png" sizes="192x192" href="/android-icon-192x192.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+		<link rel="manifest" href="/manifest.json">
+		<meta name="msapplication-TileColor" content="#ffffff">
+		<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+		<meta name="theme-color" content="#ffffff">
+
+        <style>
+
+			body {
+				margin: 0;
+				padding: 0;
+				font-family: 'Roboto', sans-serif;
+			}
+
+			input[type='text'],
+			input[type='password'],
+			input[type='number'] {
+				border: 1px solid black;
+				border-radius: 4px;
+				width: calc(100% - 40px);
+				max-width: 500px;
+				font-size: 1em;
+			}
+
+			label {
+				font-size: 0.8em;
+			}
+
+			input::placeholder {
+				text-align: center;
+			}
+
+			#sign_up, #waiting, #quiz, #spent_fm, #submit_loading, #submit_waiting {
+				display: none;
+			}
+
+			#loading, #sign_up, #waiting, #quiz {
+  				position: relative;
+				width: 100%;
+				height: 100%;
+			}
+
+			#loading > img {
+				position: absolute;
+				left: calc(50% - 25px);
+				top: calc(50% - 25px);
+				width: 50px;
+				height: 50px;
+			}
+
+			#sign_up {
+				box-sizing: border-box;
+			}
+
+
+			#sign_up > #register > div,
+			#sign_up > #login > div {
+			  	position: relative;
+			  	top: 50%;
+			  	left: 50%;
+			  	transform: translate(-50%, -50%);
+				text-align: center;
+			}
+
+			#sign_up h2 {
+				margin-top: 0px;
+				margin-bottom: 0;
+			}
+
+			#sign_up input {
+				font-size: 0.8em;
+				padding: 5px;
+				margin-bottom: 11px;
+				min-width: 200px;
+				max-width: 300px;
+			}
+
+			#sign_up button {
+				font-size: 0.8em;
+				padding: 5px;
+				margin-bottom: 11px;
+				width: 100px;
+			}
+
+			#sign_up > #banner {
+				position: absolute;
+			  	left: 50%;
+			  	transform: translate(-50%, 0);
+			  	width: 100%;
+				max-width: 583px;
+				max-height: 350px;
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: contain;
+			}
+
+			#sign_up > #register {
+				width: 100%;
+				height: 100%;
+				padding-top: 180px;
+				box-sizing: border-box;
+			}
+
+			h5 {
+				margin-top: 0;
+			}
+
+			#sign_up > #register > button {
+				width: 50%;
+			}
+
+			#sign_up > #login {
+				display: none;
+				width: 100%;
+				height: 100%;
+				padding-top: 100px;
+				box-sizing: border-box;
+			}
+
+			#waiting > div {
+			  	position: absolute;
+			  	top: 50%;
+			  	left: 50%;
+			  	transform: translate(-50%, -50%);
+				text-align: center;
+			}
+
+			#waiting > div > h2 {
+				font-size: 1.5em;
+			}
+
+			#waiting > div > h3 {
+				font-size: 1.1em;
+				margin-top: 10px;
+				margin-bottom: 10px;
+			}
+
+			#waiting > div > h2 {
+				margin: 0;
+			}
+
+			#quiz {
+				padding-top: 5px;
+				text-align: center;
+				width: 100%;
+				height: 100%;
+				box-sizing: border-box;
+			}
+
+			#quiz > h2 {
+				margin-top: 10px;
+				margin-bottom: 10px;
+			}
+
+			#quiz > input {
+				font-size: 1.2em;
+				padding: 2px;
+				margin-bottom: 11px;
+			}
+
+			#quiz > #submit_loading,
+			#quiz > #submit_waiting {
+				margin-top: 10px;
+			}
+
+			#quiz > #submit_answers {
+				margin: 0 auto;
+				width: calc(100% - 40px);
+				padding-top: 10px;
+				padding-bottom: 10px;
+				max-width: 500px;
+				margin-top: 10px;
+				text-align: center;
+				background-color: black;
+				color: white;
+				cursor: pointer;
+				font-size: 0.8em;
+			}
+
+			#quiz > .error {
+				margin: 0 auto;
+				width: calc(100% - 40px);
+				padding-top: 10px;
+				padding-bottom: 10px;
+				max-width: 500px;
+				text-align: center;
+				color: red;
+				font-size: 0.8em;
+			}
+
+			.error {
+				text-align: center;
+				color: red;
+				font-size: 0.8em;
+				font-weight: bold;
+			}
+
+			#quiz > h3 {
+				margin: 5px;
+			}
+
+			h4 {
+				font-size: 0.8em;
+			}
+
+        </style>
+
+    </head>
+
+    <body>
+
+        <div id="loading" style="display: none;">
+            <img src="img/loading.svg" style="filter: invert(100%)">
+        </div>
+
+        <div id="sign_up" style="display: block;">
+
+			<img id="banner" src="/img/banner.png">
+
+        	<div id="register">
+
+        		<div>
+					<h2>Register</h2>
+	        		<h5>You'll need to be watching <a target="_blank" href="https://twitch.tv/worldfamouspubquiz">twitch.tv/worldfamouspubquiz</a> to get the questions</h5>
+        			<input type="text" id="register_username" placeholder="Username"><br>
+        			<input type="password" id="register_password" placeholder="Password"><br>
+        			<input type="text" id="register_teamname" placeholder="Team Name"><br>
+        			<input type="number" id="register_members" placeholder="# of Members" min="1"><br>
+        			<button id="register_button">Register</button> or <a id="swapToSignIn" href="#">Sign In</a>
+        			<div class="error"></div>
+				</div>
+
+			</div>
+
+			<div id="login">
+				<div>
+					<h2>Login</h2>
+	        		<h5>You'll need to be watching <a target="_blank" href="https://twitch.tv/worldfamouspubquiz">twitch.tv/worldfamouspubquiz</a> to get the questions</h5>
+					<input type="text" id="login_username" placeholder="Username"><br>
+					<input type="password" id="login_password" placeholder="Password"><br>
+					<button id="login_button">Login</button> or <a id="swapToRegister" href="#">Register</a>
+					<div class="error"></div>
+				</div>
+			</div>
+
+        </div>
+
+        <div id="waiting" style="display: none;">
+
+        	<div>
+	        	<h3 class="team_name"></h3>
+	        	<h2>Stream starts 20:30 BST on Saturday 11th April</h2>
+	        	<h2>You'll need to be watching <a target="_blank" href="https://twitch.tv/worldfamouspubquiz">twitch.tv/worldfamouspubquiz</a> to get the questions</h2>
+        		<h4><a href="https://www.justgiving.com/fundraising/wfpq-202004" target="_blank">We recommend you donate £2 per team member to Special Effect. <br>Don't stop there though... please give generously!  We want to raise 5k tonight!</a></h4>
+        	</div>
+
+        </div>
+
+        <div id="quiz" style="display: none;">
+
+        	<h3 class="team_name"></h3>
+        	<h2 id="round">Round 1</h2>
+        	<h4>
+	        	You'll need to be watching <a target="_blank" href="https://twitch.tv/worldfamouspubquiz">twitch.tv/worldfamouspubquiz</a> to get the questions<br>
+	        	<a href="https://www.justgiving.com/fundraising/wfpq-202004" target="_blank">We recommend you donate £2 per team member to Special Effect.<br>Don't stop there though... please give generously!  We want to raise 5k tonight!</a>
+        	</h4>
+        	<input id="question-1" type="text" placeholder="Question 1"><br>
+        	<input id="question-2" type="text" placeholder="Question 2"><br>
+        	<input id="question-3" type="text" placeholder="Question 3"><br>
+        	<input id="question-4" type="text" placeholder="Question 4"><br>
+        	<input id="question-5" type="text" placeholder="Question 5"><br>
+        	<input id="question-6" type="text" placeholder="Question 6"><br>
+        	<input id="question-7" type="text" placeholder="Question 7"><br>
+        	<input id="question-8" type="text" placeholder="Question 8"><br>
+        	<input id="question-9" type="text" placeholder="Question 9"><br>
+        	<input id="question-10" type="text" placeholder="Question 10"><br>
+
+        	<label id="active_fm">
+	        	Use fatmouse (double points)? <input id="fatmouse" type="checkbox"><br>
+	        	One time use, choose wisely!
+        	</label>
+
+        	<label id="spent_fm">
+	        	You have used your fatmouse
+        	</label>
+
+        	<div id="submit_answers">
+        		Submit answers<br>
+        		<span id="auto_lock"></span>
+        	</div>
+
+        	<div id="submit_loading">
+        		<img src="/img/loading.svg" style="filter: invert(100%)">
+        	</div>
+
+        	<div id="submit_waiting">
+        		Waiting for next round<br>
+        	</div>
+
+        	<div class="error"></div>
+
+        </div>
+
+
+
+    <script src="quiz.js"></script>
+
+</body></html>
