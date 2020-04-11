@@ -6,12 +6,12 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
+    <link href="https://emoji-css.afeld.me/emoji.css" rel="stylesheet">
     <title>Hello, world!</title>
   </head>
   <body>
 
-    <!-- Navbar -->
+    <!-- Navbar
     <div class="sticky-top">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Navbar</a>
@@ -27,9 +27,57 @@
           </div>
         </div>
       </nav>
+    </div> -->
+
+
+    <div class="container-fluid sticky-top pt-2">
+      <!--
+      <i class="em em-beers" aria-role="presentation" aria-label="BIRD"></i>
+      -->
+      <h1 class="display-9">The World Famous Pub Quiz</h1>
     </div>
 
     <!--Containing Content -->
+
+    <div class="container-fluid">
+
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-9">
+          <div class="jumbotron">
+            <script src= "https://player.twitch.tv/js/embed/v1.js"></script>
+            <div id="twitchplayer"></div>
+            <script type="text/javascript">
+              var wd = document.getElementById("twitchplayer").offsetWidth
+              var options = {
+                width: wd,
+                height: ((wd/16)*9),
+                channel: "worldfamouspubquiz",
+                // only needed if your site is also embedded on embed.example.com and othersite.example.com
+                parent: ["embed.example.com", "othersite.example.com"]
+              };
+              var player = new Twitch.Player("twitchplayer", options);
+              player.setVolume(0.5);
+            </script>
+          </div>
+        </div>
+        <div class="col">
+          <div class="jumbotron">
+            <iframe frameborder="<frameborder width>"
+              scrolling="<scrolling>"
+              id="<channel>"
+              src="<src url>?<parent>"
+              height="<height>"
+              width="<width>">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--OLD
 
     <div class="container-fluid pt-3">
       <div class="jumbotron">
@@ -41,6 +89,8 @@
         </div>
       </div>
     </div>
+
+  -->
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
